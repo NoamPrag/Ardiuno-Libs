@@ -7,45 +7,16 @@ private:
     bool ledState;
     long changeTime;
 
-    void write()
-    {
-        digitalWrite(pin, ledState);
-    }
+    void write();
 
 public:
     LED(const int pin);
 
-    void on()
-    {
-        this->ledState = HIGH;
-        this->changeTime = millis();
-        write();
-    }
+    void on();
 
-    void off()
-    {
-        changeTime = millis();
-        this->ledState = LOW;
-        write();
-    }
+    void off();
 
-    void blink(const int onTime, const int offTime)
-    {
-        if (this->ledState)
-        {
-            if (millis() - this->changeTime >= onTime)
-            {
-                off();
-            }
-        }
-        else if (millis() - this->changeTime >= offTime)
-        {
-            on();
-        }
-    }
+    void blink(const int onTime, const int offTime);
 
-    void setBrightness(const int brightness)
-    {
-        analogWrite(pin, brightness);
-    }
+    void setBrightness(const int brightness);
 };
