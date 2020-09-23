@@ -19,4 +19,6 @@ public:
     void blink(const int onTime, const int offTime);
 
     void setBrightness(const int brightness);
+
+    void fade(const int start, const int end, const int time);
 };

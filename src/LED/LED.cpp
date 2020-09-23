@@ -43,3 +43,18 @@ void LED::setBrightness(const int brightness)
 {
     analogWrite(this->pin, brightness);
 }
+
+void LED::fade(const int start = 0, const int end = 255, const int time) {
+    static int brightness = start;
+
+    static const int fadeAmount = (end - start) / time;
+
+    const unsigned long int time = millis();
+    static unsigned long int prevTime = time;
+
+    brightness += (time - prevTime) * fadeAmount;
+
+    setBrightness(brightness);
+
+    prevTime = time;
+}
